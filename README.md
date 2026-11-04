@@ -1,5 +1,7 @@
 # ShedClock 🏗️
 
+[![CI](https://github.com/char203/shedclock/actions/workflows/ci.yml/badge.svg)](https://github.com/char203/shedclock/actions/workflows/ci.yml)
+
 **Renewal deadlines and fine exposure for NYC sidewalk sheds.**
 
 Since January 12, 2026 (Local Laws 48 & 49 of 2025, the "Get Sheds Down" package),
@@ -30,6 +32,16 @@ costing in monthly penalties.
 npm install
 npm run dev
 ```
+
+## Tests
+
+```bash
+npm test
+```
+
+Unit tests cover the fine model (`lib/fines.js`) and permit-to-site grouping
+(`lib/sites.js`). CI runs them under several time zones, because Socrata
+timestamps carry no zone and must keep their calendar date wherever the code runs.
 
 ## Fine model (Local Law 49 of 2025)
 
