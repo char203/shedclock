@@ -88,6 +88,11 @@ assert.equal(a.permitCount, 2);
 assert.ok(a.daysLeft > 200, `expires Mar 2027, got ${a.daysLeft} days`);
 assert.equal(a.signedOff, false);
 
+// Floating Socrata timestamps keep their calendar date regardless of the
+// host time zone (CI runs this file under several TZ values).
+assert.equal(a.latestIssuedDate.slice(0, 10), "2026-03-10");
+assert.equal(a.expirationDate.slice(0, 10), "2027-03-10");
+
 // Site B: expired 34 days ago, still open -> negative daysLeft
 assert.ok(b.daysLeft < 0, `should be negative, got ${b.daysLeft}`);
 assert.equal(b.signedOff, false);
